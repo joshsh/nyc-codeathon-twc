@@ -4,8 +4,17 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <title>Sgvizler</title>
       <meta charset="UTF-8">
-      <link rel="stylesheet" type="text/css" href="../lib/sgvizler/example.html/examples.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="../lib/sgvizler/sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
-      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      <link rel="stylesheet" type="text/css" href="../lib/sgvizler/example.html/examples.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="../lib/sgvizler/sgvizler.js"></script><script type="text/javascript">
+
+ var query = "";
+
+       function getUrlData() {
+       var comment = getParameter("comment");
+       document.getElementsByName("my-textarea")[0].value = comment;
+       }
+
+       sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+       sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
 
         $(document).ready(function() { sgvizler.containerDrawAll(); });
       </script></head>
@@ -16,23 +25,34 @@
       <h3><code>sgvizler.visualization.Map</code>: Things north of 72.5 degrees north
       </h3>
       <p></p>
-      <div id="sgvzl_example_query" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT ?lat ?long ?name &#34;&#34; ?url WHERE { ?url npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:name ?name ; FILTER (?lat &gt; 72.5) }" data-sgvizler-chart="sgvizler.visualization.Map" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+
+
+      <h2><code>Incidence (percentage) of diabetes indicators in X county</code></h2>
+      <div id="twc_visualization-1" data-sgvizler-endpoint="http://logd.tw.rpi.edu/sparql"
+           data-sgvizler-query=
+                   "PREFIX ny: <http://logd.tw.rpi.edu/source/health-data-ny-gov/dataset/Community-Health-Obesity-and-Diabetes-Related-Indi/vocab/enhancement/1/> SELECT ?indicator ?percentage WHERE { ?s ny:county_name 'Albany' . ?s ny:indicator ?indicator . ?s ny:percentage_rate ?percentage . FILTER(regex(?indicator, 'rate', 'i')) } ORDER BY ?indicator"
+           data-sgvizler-chart="google.visualization.BarChart" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+
+      <h2><code>Incidence (percentage) of diabetes indicators in X county</code></h2>
+      <div id="twc_visualization-2" data-sgvizler-endpoint="http://logd.tw.rpi.edu/sparql"
+           data-sgvizler-query=
+                   "PREFIX ny: <http://logd.tw.rpi.edu/source/health-data-ny-gov/dataset/Community-Health-Obesity-and-Diabetes-Related-Indi/vocab/enhancement/1/> SELECT ?indicator ?rate WHERE { ?s ny:county_name 'Albany' . ?s ny:indicator ?indicator . ?s ny:percentage_rate ?rate . FILTER(regex(?indicator, 'percentage', 'i')) } ORDER BY ?indicator"
+           data-sgvizler-chart="google.visualization.BarChart" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+
+
+
+
+      <div id="sgvzl_example_query" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT ?name (count(*) AS ?noOfFields) WHERE{ [] a npdv:Field ; npdv:hasCompany [ npdv:name ?name ] . } GROUP BY ?name ORDER BY ?name" data-sgvizler-chart="google.visualization.PieChart" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
       <p>The element which draws the above chart:</p><pre id="sgvzl_example_pre">&lt;div id="sgvzl_example_query"
    data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd"
-   data-sgvizler-query="SELECT ?lat ?long ?name &amp;quot;&amp;quot; ?url WHERE { ?url npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:name ?name ; FILTER (?lat &gt; 72.5) }"
-   data-sgvizler-chart="sgvizler.visualization.Map"
+   data-sgvizler-query="SELECT ?name (count(*) AS ?noOfFields) WHERE{ [] a npdv:Field ; npdv:hasCompany [ npdv:name ?name ] . } GROUP BY ?name ORDER BY ?name"
+   data-sgvizler-chart="google.visualization.PieChart"
    data-sgvizler-loglevel="2"
    style="width:800px; height:400px;"/&gt;</pre><h3>The results of the query in <code>gTable</code></h3>
-      <div id="sgvzl_example_table" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT ?lat ?long ?name &#34;&#34; ?url WHERE { ?url npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:name ?name ; FILTER (?lat &gt; 72.5) }" data-sgvizler-chart="google.visualization.Table" data-sgvizler-loglevel="2" style="width:800px; height:200px;"></div>
-      <div id="footer">
-         <!--Please leave a link to the Sgvizler homepage.-->
-         <p>
-                Sgvizler visualizes the result of SPARQL SELECT queries. For more
-                information, see the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
-                homepage. (c) 2011--2013 Martin G. Skjæveland.
+      <div id="sgvzl_example_table" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT ?name (count(*) AS ?noOfFields) WHERE{ [] a npdv:Field ; npdv:hasCompany [ npdv:name ?name ] . } GROUP BY ?name ORDER BY ?name" data-sgvizler-chart="google.visualization.Table" data-sgvizler-loglevel="2" style="width:800px; height:200px;"></div>
+      <h3>Same query, different charts</h3>
+      <p>Not all charts may be well-suited for displaying this dataset.</p>
 
-         </p>
-      </div>
    </body>
 </html>
 ~        
