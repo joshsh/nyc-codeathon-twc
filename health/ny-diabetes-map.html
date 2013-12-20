@@ -1,0 +1,89 @@
+
+<html>
+  <head>
+      <title>Diabetes indicators in New York State (choropleth visualization)</title>
+      <link rel="stylesheet" type="text/css" href="css/choropleth-demo.css"/>
+      <script type="text/javascript" src="../copy/js/protodata.js"></script>
+    <script type="text/javascript" src="../copy/js/polymaps.js"></script>
+    <!--<script type="text/javascript" src="../copy/data/unemployment-data.js"></script>-->
+    <script type="text/javascript" src="js/counties.js"></script>
+    <script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'></script>
+    <script type="text/javascript">/* <![CDATA[ */
+
+          $( document ).ready(function() {
+
+          getDataAndVisualize();
+
+          });
+
+          /* ]]> */</script>
+      <style type="text/css">
+
+@import url("../copy/css/colorbrewer.css");
+@import url("../copy/css/example.css");
+
+#map {
+  background: #E6E6E6;
+}
+
+.layer path {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: .25px;
+  vector-effect: non-scaling-stroke;
+}
+
+#state path {
+  stroke: #fff;
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+
+#copy {
+  color: #000;
+  opacity: .5;
+}
+
+#copy a {
+  color: #000;
+}
+
+    </style>
+  </head>
+  <body id="map">
+  <script src='js/choropleth-demo.js'></script>
+
+    <div class="indicatorpicker">Choose a diabetes indicator:
+        <form action="">
+            <select id="indicator-select" onchange="getDataAndVisualize()">
+            <option value="Cardiovascular disease mortality rate per 100,000">Cardiovascular disease mortality rate per 100,000</option>
+            <option value="Cerebrovascular disease (stroke) mortality rate per 100,000">Cerebrovascular disease (stroke) mortality rate per 100,000</option>
+            <option value="Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000">Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000</option>
+            <option value="Age-adjusted cardiovascular disease mortality rate per 100,000">Age-adjusted cardiovascular disease mortality rate per 100,000</option>
+            <option value="Cirrhosis mortality rate per 100,000">Cirrhosis mortality rate per 100,000</option>
+            <option value="Age-adjusted cirrhosis mortality rate per 100,000">Age-adjusted cirrhosis mortality rate per 100,000</option>
+            <option value="Diabetes mortality rate per 100,000">Diabetes mortality rate per 100,000</option>
+            <option value="Age-adjusted diabetes mortality rate per 100,000">Age-adjusted diabetes mortality rate per 100,000</option>
+            <option value="Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke">Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke</option>
+            <option value="Age-adjusted percentage of adults with physician diagnosed diabetes" selected="selected">Age-adjusted percentage of adults with physician diagnosed diabetes</option>
+            <option value="Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)">Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)</option>
+            <option value="Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)">Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)</option>
+            <option value="Percentage of WIC mothers breastfeeding at least 6 months">Percentage of WIC mothers breastfeeding at least 6 months</option>
+            <option value="Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)">Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)</option>
+            <option value="Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)">Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)</option>
+            </select>
+        </form>
+
+    </div>
+
+  <!--<script type="text/javascript" src="../copy/js/unemployment.js"></script>-->
+    <span id="copy">
+      &copy; 2010
+      <a href="http://www.cloudmade.com/">CloudMade</a>,
+      <a href="http://www.openstreetmap.org/">OpenStreetMap</a> contributors,
+      <a href="http://creativecommons.org/licenses/by-sa/2.0/">CCBYSA</a>.
+      Colors by <a href="http://colorbrewer.org/">Cynthia Brewer</a>.
+    </span>
+  </body>
+</html>
+

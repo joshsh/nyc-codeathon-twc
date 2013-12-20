@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <title>Diabetes indicators in New York State (bar chart visualization)</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Sgvizler</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../lib/sgvizler/example.html/examples.css">
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="../lib/sgvizler/example.html/examples.css"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="../lib/sgvizler/sgvizler.js"></script>
@@ -37,11 +37,22 @@
             document.getElementById("county-name-2").innerHTML = county;
 
             document.getElementById("twc-vis-diabetes-percents").setAttribute("data-sgvizler-query",
-            "PREFIX ny: <" + ny + "> SELECT ?indicator ?percentage WHERE { ?s ny:county_name '" + county + "' . ?s ny:indicator ?indicator . ?s ny:percentage_rate ?percentage . FILTER(regex(?indicator, 'percentage', 'i')) } ORDER BY ?indicator"
+            "PREFIX ny: <" + ny + ">\n"
+            + "SELECT ?indicator ?percentage WHERE {\n"
+            + "?s ny:county_name '" + county + "' .\n"
+            + "?s ny:indicator ?indicator .\n"
+            + "?s ny:percentage_rate ?percentage .\n"
+            + "FILTER(regex(?indicator, 'percentage', 'i')) }\n"
+            + "ORDER BY ?indicator"
             );
 
             document.getElementById("twc-vis-diabetes-rates").setAttribute("data-sgvizler-query",
-            "PREFIX ny: <" + ny + "> SELECT ?indicator ?rate WHERE { ?s ny:county_name '" + county + "' . ?s ny:indicator ?indicator . ?s ny:percentage_rate ?rate . FILTER(regex(?indicator, 'rate', 'i')) } ORDER BY ?indicator"
+            "PREFIX ny: <" + ny + ">\n"
+            + "SELECT ?indicator ?rate WHERE {\n"
+            + "?s ny:county_name '" + county + "' . ?s ny:indicator ?indicator .\n"
+            + "?s ny:percentage_rate ?rate .\n"
+            + "FILTER(regex(?indicator, 'rate', 'i')) }\n"
+            + "ORDER BY ?indicator"
             );
 
             sgvizler.containerDrawAll();
@@ -57,6 +68,7 @@
       <h2><code>Incidence (rate) of diabetes indicators in <span id="county-name-2"></span> county</code></h2>
       <div id="twc-vis-diabetes-rates" data-sgvizler-endpoint="http://logd.tw.rpi.edu/sparql"
            data-sgvizler-chart="google.visualization.BarChart" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+
 
    </body>
 </html>
