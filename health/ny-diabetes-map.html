@@ -8,7 +8,8 @@
     <!--<script type="text/javascript" src="../copy/data/unemployment-data.js"></script>-->
     <script type="text/javascript" src="js/counties.js"></script>
     <script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'></script>
-    <script type="text/javascript">/* <![CDATA[ */
+    <script type="text/javascript" src="js/diabetes.js"></script>
+      <script type="text/javascript">/* <![CDATA[ */
 
           $( document ).ready(function() {
 
@@ -50,31 +51,34 @@
 
     </style>
   </head>
-  <body id="map">
-  <script src='js/choropleth-demo.js'></script>
+  <body>
 
-    <div class="indicatorpicker">Choose a diabetes indicator:
-        <form action="">
-            <select id="indicator-select" onchange="getDataAndVisualize()">
-            <option value="Cardiovascular disease mortality rate per 100,000">Cardiovascular disease mortality rate per 100,000</option>
-            <option value="Cerebrovascular disease (stroke) mortality rate per 100,000">Cerebrovascular disease (stroke) mortality rate per 100,000</option>
-            <option value="Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000">Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000</option>
-            <option value="Age-adjusted cardiovascular disease mortality rate per 100,000">Age-adjusted cardiovascular disease mortality rate per 100,000</option>
-            <option value="Cirrhosis mortality rate per 100,000">Cirrhosis mortality rate per 100,000</option>
-            <option value="Age-adjusted cirrhosis mortality rate per 100,000">Age-adjusted cirrhosis mortality rate per 100,000</option>
-            <option value="Diabetes mortality rate per 100,000">Diabetes mortality rate per 100,000</option>
-            <option value="Age-adjusted diabetes mortality rate per 100,000">Age-adjusted diabetes mortality rate per 100,000</option>
-            <option value="Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke">Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke</option>
-            <option value="Age-adjusted percentage of adults with physician diagnosed diabetes" selected="selected">Age-adjusted percentage of adults with physician diagnosed diabetes</option>
-            <option value="Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)">Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)</option>
-            <option value="Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)">Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)</option>
-            <option value="Percentage of WIC mothers breastfeeding at least 6 months">Percentage of WIC mothers breastfeeding at least 6 months</option>
-            <option value="Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)">Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)</option>
-            <option value="Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)">Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)</option>
-            </select>
-        </form>
+  <div id="nav" class="indicatorpicker">
+      Choose a diabetes indicator:
+      <form action="">
+          <select id="indicator-select" onchange="selectionChanged()">
+              <option value="Cardiovascular disease mortality rate per 100,000">Cardiovascular disease mortality rate per 100,000</option>
+              <option value="Cerebrovascular disease (stroke) mortality rate per 100,000">Cerebrovascular disease (stroke) mortality rate per 100,000</option>
+              <option value="Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000">Age-adjusted cerebrovascular disease (stroke) mortality rate per 100,000</option>
+              <option value="Age-adjusted cardiovascular disease mortality rate per 100,000">Age-adjusted cardiovascular disease mortality rate per 100,000</option>
+              <option value="Cirrhosis mortality rate per 100,000">Cirrhosis mortality rate per 100,000</option>
+              <option value="Age-adjusted cirrhosis mortality rate per 100,000">Age-adjusted cirrhosis mortality rate per 100,000</option>
+              <option value="Diabetes mortality rate per 100,000">Diabetes mortality rate per 100,000</option>
+              <option value="Age-adjusted diabetes mortality rate per 100,000">Age-adjusted diabetes mortality rate per 100,000</option>
+              <option value="Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke">Age-adjusted percentage of adults with physician diagnosed angina, heart attack or stroke</option>
+              <option value="Age-adjusted percentage of adults with physician diagnosed diabetes">Age-adjusted percentage of adults with physician diagnosed diabetes</option>
+              <option value="Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)">Percentage of pregnant women in WIC who were pre-pregnancy overweight but not obese (BMI 25 to less than 30)</option>
+              <option value="Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)">Percentage of pregnant women in WIC who were pre-pregnancy obese (BMI 30 or higher)</option>
+              <option value="Percentage of WIC mothers breastfeeding at least 6 months">Percentage of WIC mothers breastfeeding at least 6 months</option>
+              <option value="Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)">Percentage overweight but not obese (85th-<95th percentile) - All students (elementary, middle and high school)</option>
+              <option value="Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)">Percentage obese (95th percentile or higher) - All students (elementary, middle and high school)</option>
+          </select>
+      </form>
+  </div>
 
-    </div>
+  <div id="map">
+      <script src='js/choropleth-demo.js'></script>
+  </div>
 
   <!--<script type="text/javascript" src="../copy/js/unemployment.js"></script>-->
     <span id="copy">

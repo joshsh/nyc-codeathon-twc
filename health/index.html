@@ -11,11 +11,6 @@
         <script type="text/javascript" src="js/diabetes.js"></script>
         <script type="text/javascript">
 
- var query = "";
-
-
-
-
        function getUrlData() {
        var comment = getParameter("comment");
        document.getElementsByName("my-textarea")[0].value = comment;
@@ -29,7 +24,7 @@
             var ny = "http://logd.tw.rpi.edu/source/health-data-ny-gov/dataset/Community-Health-Obesity-and-Diabetes-Related-Indi/vocab/enhancement/1/";
 
             var county = getParameter("county");
-                if (null == county) {
+            if (null == county) {
                 county = "Oswego";
             }
 
